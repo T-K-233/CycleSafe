@@ -1,18 +1,32 @@
 ---
 layout: default
 ---
-
-<div class="home">
-  
-  <ul class="posts">
-    {% for post in site.posts %}
-      <li>
-        <span class="post-date">{{ post.date | date: "%b %-d, %Y" }}</span>
-        <a class="post-link" href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
-        <br>
-        {{ post.excerpt }}
-      </li>
-    {% endfor %}
-  </ul>
-
+<img width="100%" src="img/banner.png">
+<div class="container">
+  <div class="row">
+    <div class="col s12 m4">
+      <div class="icon-block">
+        <h2 class="center red-text"><i class="material-icons">flash_on</i></h2>
+        <h5 class="center">Safety Matters</h5>
+        <p class="light">70% of bicycle accidents occur in urban areas (National Highway Traffic Safety Administration) and young bikers, aged less than 20, have the highest rate of non-fatal accidents (Center for Disease Control), the target market segment is young, urban bikers with a tendency to bike at night. </p>
+      </div>
+    </div>
+    <div class="col s12 m4">
+      <div class="icon-block">
+        <h2 class="center red-text"><i class="material-icons">group</i></h2>
+        <h5 class="center">For College Students</h5>
+        <p class="light">Our product is a complete bike safety lighting system for urban college students that integrates more visibility for lane indication and turn signals with the use of lasers.  </p>
+      </div>
+    </div>
+    <div class="col s12 m4">
+      <div class="icon-block">
+        <h2 class="center red-text"><i class="material-icons">settings</i></h2>
+        <h5 class="center">Easy To Use</h5>
+        <p class="light">Our product comes in only two small parts: a core hub with batteries that projects lasers lanes on the road and turn signal lights at the back, and a controlpad at the handlebars.</p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="center"><a class="red btn" href="product.html">LEARN MORE</a></div>
+  </div>
 </div>
