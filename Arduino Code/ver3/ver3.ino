@@ -37,15 +37,16 @@ void setup() {
 }
 
 void loop() {
-  if(timer % 100 == 0){
+  if(timer % 50 == 0){
       int trig, echo;
       trig = PING_L_TRIG; echo = PING_L_ECHO;
       Serial.print("Distance @ left: ");
       digitalWrite(trig, LOW);    delayMicroseconds(2);
       digitalWrite(trig, HIGH);   delayMicroseconds(10);
       digitalWrite(trig, LOW);
-      int distance = pulseIn(echo, HIGH) / 58;
-      Serial.println(distance);
+      int distance;
+      distance = pulseIn(echo, HIGH) / 58;
+       Serial.println(distance);
       trig = PING_R_TRIG; echo = PING_R_ECHO;
       Serial.print("Distance @ right: ");
       digitalWrite(trig, LOW);    delayMicroseconds(2);
@@ -118,6 +119,6 @@ void loop() {
   if(timer > 1000){
     timer = 0;
   }
-  analogWrite(LASER, 20);
+  analogWrite(LASER, 0);
   delay(1);
 }
