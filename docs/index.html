@@ -1,63 +1,79 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/css/materialize.min.css">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>LaserSafe | The MVP</title>
-  <style>
-    @font-face{font-family:brandon-grotesque;src:url(https://use.typekit.com/af/53f8f6/0000000000000000000132df/27/l?subset_id=2&fvd=n4&v=3) format("woff2"),url(https://use.typekit.com/af/53f8f6/0000000000000000000132df/27/d?subset_id=2&fvd=n4&v=3) format("woff"),url(https://use.typekit.com/af/53f8f6/0000000000000000000132df/27/a?subset_id=2&fvd=n4&v=3) format("opentype");font-weight:400;font-style:normal;}@font-face{font-family:brandon-grotesque;src:url(https://use.typekit.com/af/6dbadf/0000000000000000000132e0/27/l?subset_id=2&fvd=i4&v=3) format("woff2"),url(https://use.typekit.com/af/6dbadf/0000000000000000000132e0/27/d?subset_id=2&fvd=i4&v=3) format("woff"),url(https://use.typekit.com/af/6dbadf/0000000000000000000132e0/27/a?subset_id=2&fvd=i4&v=3) format("opentype");font-weight:400;font-style:italic;}@font-face{font-family:brandon-grotesque;src:url(https://use.typekit.com/af/6286a5/0000000000000000000132e3/27/l?subset_id=2&fvd=n7&v=3) format("woff2"),url(https://use.typekit.com/af/6286a5/0000000000000000000132e3/27/d?subset_id=2&fvd=n7&v=3) format("woff"),url(https://use.typekit.com/af/6286a5/0000000000000000000132e3/27/a?subset_id=2&fvd=n7&v=3) format("opentype");font-weight:700;font-style:normal;}@font-face{font-family:brandon-grotesque;src:url(https://use.typekit.com/af/dc987d/0000000000000000000132dd/27/l?subset_id=2&fvd=n3&v=3) format("woff2"),url(https://use.typekit.com/af/dc987d/0000000000000000000132dd/27/d?subset_id=2&fvd=n3&v=3) format("woff"),url(https://use.typekit.com/af/dc987d/0000000000000000000132dd/27/a?subset_id=2&fvd=n3&v=3) format("opentype");font-weight:300;font-style:normal;}@font-face{font-family:brandon-grotesque;src:url(https://use.typekit.com/af/3ce91c/0000000000000000000132e1/27/l?subset_id=2&fvd=n5&v=3) format("woff2"),url(https://use.typekit.com/af/3ce91c/0000000000000000000132e1/27/d?subset_id=2&fvd=n5&v=3) format("woff"),url(https://use.typekit.com/af/3ce91c/0000000000000000000132e1/27/a?subset_id=2&fvd=n5&v=3) format("opentype");font-weight:500;font-style:normal;}@font-face{font-family:pragmatica-web-condensed;src:url(https://use.typekit.com/af/68aed0/0000000000000000000100d4/27/l?subset_id=2&fvd=n4&v=3) format("woff2"),url(https://use.typekit.com/af/68aed0/0000000000000000000100d4/27/d?subset_id=2&fvd=n4&v=3) format("woff"),url(https://use.typekit.com/af/68aed0/0000000000000000000100d4/27/a?subset_id=2&fvd=n4&v=3) format("opentype");font-weight:400;font-style:normal;}@font-face{font-family:pragmatica-web-condensed;src:url(https://use.typekit.com/af/19cfc0/0000000000000000000100d6/27/l?subset_id=2&fvd=n3&v=3) format("woff2"),url(https://use.typekit.com/af/19cfc0/0000000000000000000100d6/27/d?subset_id=2&fvd=n3&v=3) format("woff"),url(https://use.typekit.com/af/19cfc0/0000000000000000000100d6/27/a?subset_id=2&fvd=n3&v=3) format("opentype");font-weight:300;font-style:normal;}
-  </style>
-  <style>
-    nav{
-      font-family: 'Brandon Grotesque','brandon-grotesque',Helvetica,sans-serif;
-    }
-  </style>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
 </head>
 <body>
-<nav>
-  <div class="grey darken-4 nav-wrapper">
-    <div class="container">
-      <a href="/" class="brand-logo">The MVP</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="badges.html">TEAM</a></li>
-        <li><a href="collapsible.html">SPONSOR</a></li>
+  <nav class="white" role="navigation">
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="#" class="brand-logo">LOGO HERE</a>
+      <ul class="right hide-on-med-and-down">
+        <li><a href="#">Home</a></li>
       </ul>
+
+      <ul id="nav-mobile" class="sidenav">
+        <li><a href="#">Navbar Link</a></li>
+      </ul>
+      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     </div>
-  </div>
-</nav>
-<img width="100%" src="assets/site/banner.png">
-<div class="container">
-  <div class="row">
-    <div class="col s12 m4">
-      <div class="icon-block">
-        <h2 class="center red-text"><i class="material-icons">flash_on</i></h2>
-        <h5 class="center">Safety Matters</h5>
-        <p class="light">70% of bicycle accidents occur in urban areas (National Highway Traffic Safety Administration) and young bikers, aged less than 20, have the highest rate of non-fatal accidents (Center for Disease Control), the target market segment is young, urban bikers with a tendency to bike at night. </p>
+  </nav>
+  <div id="index-banner" class="parallax-container">
+    <div class="section no-pad-bot">
+      <div class="container">
+        <br><br>
+        <br><br>
+        <h1 class="header white-text text-lighten-2">CycleSafe</h1>
+        <div class="row">
+          <h3 class="header white-text col s12 light right-align">ride right, ride bright</h3>
+        </div>
+        <br><br>
       </div>
     </div>
-    <div class="col s12 m4">
-      <div class="icon-block">
-        <h2 class="center red-text"><i class="material-icons">group</i></h2>
-        <h5 class="center">For College Students</h5>
-        <p class="light">Our product is a complete bike safety lighting system for urban college students that integrates more visibility for lane indication and turn signals with the use of lasers.  </p>
+    <div class="parallax"><img src="img/banner.jpg"></div>
+  </div>
+  <div class="container">
+    <div class="section">
+
+      <!--   Icon Section   -->
+      <div class="row">
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center brown-text"><i class="material-icons">flash_on</i></h2>
+            <h5 class="center">Speeds up development</h5>
+
+            <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center brown-text"><i class="material-icons">group</i></h2>
+            <h5 class="center">User Experience Focused</h5>
+
+            <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center brown-text"><i class="material-icons">settings</i></h2>
+            <h5 class="center">Easy to work with</h5>
+
+            <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
+          </div>
+        </div>
       </div>
-    </div>
-    <div class="col s12 m4">
-      <div class="icon-block">
-        <h2 class="center red-text"><i class="material-icons">settings</i></h2>
-        <h5 class="center">Easy To Use</h5>
-        <p class="light">Our product comes in only two small parts: a core hub with batteries that projects lasers lanes on the road and turn signal lights at the back, and a controlpad at the handlebars.</p>
-      </div>
+
     </div>
   </div>
-  <div class="row">
-    <div class="center"><a class="red btn" href="product.html">LEARN MORE</a></div>
-  </div>
-</div>
+  <script>
+  $(document).ready(function(){
+    $('.parallax').parallax();
+  });
+  </script>
 </body>
 </html>

@@ -25,6 +25,7 @@ const int BT_L = 8, BT_R = 7, BT_HEAD = 6;
 const int PING_L_ECHO = 9, PING_L_TRIG = 10, PING_R_ECHO = 11, PING_R_TRIG = 12;
 
 const bool LEFT = false, RIGHT = true;
+int turning_shining_time = 500;
 
 int turning_l = false, turning_r = false;
 int timer = 0, l_bt_timer = 0, r_bt_timer = 0, head_bt_timer = 0;
@@ -74,16 +75,16 @@ void loop() {
     head_bt_released = true;
   }
   
-  if(l_bt_timer > 100 && r_bt_timer == 0){
+  if(l_bt_timer > 80 && r_bt_timer == 0){
     turning_l = !turning_l;
     turning_r = false;
     Serial.println("button pressed");
-    l_bt_timer = 0;
+    l_bt_timer = -500;
   }
-  if(r_bt_timer > 100 && l_bt_timer == 0){
+  if(r_bt_timer > 80 && l_bt_timer == 0){
     turning_r = !turning_r;
     turning_l = false;
-    r_bt_timer = 0;
+    r_bt_timer = -500;
   }
   if(l_bt_timer > 1000 && r_bt_timer > 1000){
     // TODO: emergency
@@ -98,7 +99,7 @@ void loop() {
     head_bt_timer = 0;
   }
   if(turning_l){
-    if(timer < 500){
+    if(timer < turning_shining_time / 2){
       digitalWrite(LED_L, HIGH);
     } else {
       digitalWrite(LED_L, LOW);
@@ -107,7 +108,7 @@ void loop() {
     digitalWrite(LED_L, LOW);
   }
   if(turning_r){
-    if(timer < 500){
+    if(timer < turning_shining_time / 2){
       digitalWrite(LED_R, HIGH);
     } else {
       digitalWrite(LED_R, LOW);
@@ -116,7 +117,7 @@ void loop() {
     digitalWrite(LED_R, LOW);
   }
   timer ++;
-  if(timer > 1000){
+  if(timer > turning_shining_time){
     timer = 0;
   }
   analogWrite(LASER, 0);

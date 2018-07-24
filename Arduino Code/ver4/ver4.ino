@@ -1,32 +1,34 @@
-/*
- * —————————————————————————— *
- *   accel_x         ---- A0     VIN --- 
- *   accel_z         ---- A1     VCC ---
- *                   ---- A2     GND ---
- *                   ---- A3     RES --- 
- *                   ---- A4     14 ----  
- *                   ---- A5     13 ---- Buzzer
- *                   ---- A6     12 ---- PING_R_TRIG   green
- *                   ----  0     11 ---- PING_R_ECHO   yel
- *                   ----  1     10 ---- PING_L_TRIG   green
- *             Laser ---- ~2      9 ---- PING_L_ECHO   yel
- *    purple   LED_L ---- ~3      8 ---- BT_L
- *    blue     LED_B ---- ~4      7 ---- BT_R
- *    orange   LED_R ---- ~5      6 ---- BT_HEAD
- *    
- * —————————————————————————— *      
- *    battery 4V
- *    laser 2.3V 
- * —————————————————————————— *
- */
+  /*
+   * —————————————————————————— *
+   *   accel_x         ---- A0     VIN --- 
+   *   accel_z         ---- A1     VCC ---
+   *                   ---- A2     GND ---
+   *                   ---- A3     RES --- 
+   *                   ---- A4     14 ----  
+   *                   ---- A5     13 ---- Buzzer
+   *                   ---- A6     12 ---- PING_R_TRIG   green
+   *                   ----  0     11 ---- PING_R_ECHO   yel
+   *                   ----  1     10 ---- PING_L_TRIG   green
+   *             Laser ---- ~2      9 ---- PING_L_ECHO   yel
+   *    purple   LED_L ---- ~3      8 ---- BT_L
+   *    blue     LED_B ---- ~4      7 ---- BT_R
+   *    orange   LED_R ---- ~5      6 ---- BT_HEAD
+   *    
+   * —————————————————————————— *      
+   *    battery 4V
+   *    laser 2.3V 
+   * —————————————————————————— *
+   */
 
 const int LASER = 2, LED_L = 3, LED_R = 4, LED_B = 5;
 const int BT_L = 8, BT_R = 7, BT_HEAD = 6;
 const int PING_L_ECHO = 9, PING_L_TRIG = 10, PING_R_ECHO = 11, PING_R_TRIG = 12;
-const int ACCEL_X=0,ACCEL_Z=1, ACCEL_THRES=30;
+const int ACCEL = 3, ACCEL_THRES=30, CORRECTION_VAL = 0;
 const int buzzPin=13, distanceThres=10;
 
 const bool LEFT = false, RIGHT = true;
+
+int turning_time = 500;
 
 int turning_l = false, turning_r = false;
 int timer = 0, l_bt_timer = 0, r_bt_timer = 0, head_bt_timer = 0;
@@ -44,30 +46,30 @@ void loop() {
   if(timer % 100 == 0){
       int trig, echo;
       trig = PING_L_TRIG; echo = PING_L_ECHO;
-      Serial.print("Distance @ left: ");
+      // Serial.print("Distance @ left: ");
       digitalWrite(trig, LOW);    delayMicroseconds(2);
       digitalWrite(trig, HIGH);   delayMicroseconds(10);
       digitalWrite(trig, LOW);
       Ldistance = pulseIn(echo, HIGH) / 58;
-      Serial.println(Ldistance);
+      // Serial.println(Ldistance);
       trig = PING_R_TRIG; echo = PING_R_ECHO;
-      Serial.print("Distance @ right: ");
+      // Serial.print("Distance @ right: ");
       digitalWrite(trig, LOW);    delayMicroseconds(2);
       digitalWrite(trig, HIGH);   delayMicroseconds(10);
       digitalWrite(trig, LOW);
       Rdistance = pulseIn(echo, HIGH) / 58;
-      Serial.println(Rdistance);
+      // Serial.println(Rdistance);
 
   }
 
-  if(Rdistance<distanceThres || Ldistance <distanceThres)
-  {
+  if(Rdistance<distanceThres || Ldistance <distanceThres) {
     tone(buzzPin, 2000, 1);
   }
 
   //Turn Signals
   if(digitalRead(BT_L)){
     l_bt_timer ++;
+    Serial.println("button pressed");
   } else {
     l_bt_timer = 0;
   }
@@ -84,16 +86,16 @@ void loop() {
     head_bt_released = true;
   }
   
-  if(l_bt_timer > 100 && r_bt_timer == 0){
+  if(l_bt_timer > 200 && r_bt_timer == 0){
     turning_l = !turning_l;
     turning_r = false;
-    Serial.println("button pressed");
     l_bt_timer = 0;
   }
-  if(r_bt_timer > 100 && l_bt_timer == 0){
+  if(r_bt_timer > 200 && l_bt_timer == 0){
     turning_r = !turning_r;
     turning_l = false;
     r_bt_timer = 0;
+    Serial.println("Turning right");
   }
   if(l_bt_timer > 1000 && r_bt_timer > 1000){
     // TODO: emergency
@@ -108,8 +110,10 @@ void loop() {
     head_bt_timer = 0;
   }
   if(turning_l){
-    if(timer < 500){
-      digitalWrite(LED_L, HIGH);
+    if(timer < turning_time / 2){
+      analogWrite(LED_L, 150);
+      Serial.println("tuning time");
+      Serial.println(turning_time / 2);
     } else {
       digitalWrite(LED_L, LOW);
     }
@@ -117,8 +121,8 @@ void loop() {
     digitalWrite(LED_L, LOW);
   }
   if(turning_r){
-    if(timer < 500){
-      digitalWrite(LED_R, HIGH);
+    if(timer < turning_time / 2){
+      analogWrite(LED_R, 150);
     } else {
       digitalWrite(LED_R, LOW);
     }
@@ -126,25 +130,22 @@ void loop() {
     digitalWrite(LED_R, LOW);
   }
   timer ++;
-  if(timer > 1000){
+  if(timer > turning_time){
     timer = 0;
   }
   analogWrite(LASER, 20);
   delay(1);
 
   //Brake Lights
-  if(timer%250==0)
+  if(timer % 250==0)
   {
-    accel=analogRead(ACCEL_X);
+    accel = analogRead(ACCEL) - CORRECTION_VAL;
+    Serial.println(accel);
     if(accel>ACCEL_THRES)
     {
       digitalWrite(LED_B,HIGH);
-    }
-    else
-    {
+    }else{
       digitalWrite(LED_B, LOW);
     }
   }
-  
-  
 }
