@@ -6,15 +6,22 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-rc.2/js/materialize.min.js"></script>
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> 
+  <style>
+  .banner.header{
+    font-size: 8em
+  }
+  </style>
 </head>
 <body>
   <nav class="white" role="navigation">
     <div class="nav-wrapper container">
-      <a id="logo-container" href="#" class="brand-logo">LOGO HERE</a>
+      <a id="logo-container" href="." class="black-text brand-logo">CYCLESAFE</a>
       <ul class="right hide-on-med-and-down">
-        <li><a href="#">Home</a></li>
+        <li><a class="grey-text" href="">PRODUCT</a></li>
+        <li><a class="grey-text" href="showcase.html">SHOWCASE</a></li>
+        <li><a class="grey-text" href="#">TEAM</a></li>
+        <li><a class="grey-text" href="#">BUY</a></li>
       </ul>
-
       <ul id="nav-mobile" class="sidenav">
         <li><a href="#">Navbar Link</a></li>
       </ul>
@@ -24,50 +31,59 @@
   <div id="index-banner" class="parallax-container">
     <div class="section no-pad-bot">
       <div class="container">
+      <!--<div class="banner_bg"></div>-->
         <br><br>
-        <br><br>
-        <h1 class="header white-text text-lighten-2">CycleSafe</h1>
-        <div class="row">
-          <h3 class="header white-text col s12 light right-align">ride right, ride bright</h3>
-        </div>
+        <h1 class="banner header white-text text-lighten-2">CycleSafe</h1>
+        <div class="row"><h3 class="header white-text col s12 light right-align">ride right, ride bright</h3></div>
         <br><br>
       </div>
     </div>
     <div class="parallax"><img src="img/banner.jpg"></div>
   </div>
+  <br><br>
   <div class="container">
     <div class="section">
-
-      <!--   Icon Section   -->
+      <div class="row center"><h4>Safety is our number one priority, is it yours?</h4></div>
       <div class="row">
-        <div class="col s12 m4">
+        <div class="col s12 m9">
+          <p>CycleSafe is a  semi-automatic bike light safety system that aims to protect all of its users from the dangers of biking at night. Our product provides a diversity of features in order to light up your bike so that cars on the road have no excuse for not seeing you and you can ensure that you have a safe ride at night.</p>
+        </div>
+        <div class="col s12 m3">
+          <img width="100%" src="img/arrow.jpg">
+        </div>
+      </div>
+    </div>
+    <div class="section">
+      <div class="row">
+        <div class="col s12 m3">
           <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons">flash_on</i></h2>
-            <h5 class="center">Speeds up development</h5>
-
-            <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
+            <h2 class="center red-text"><i class="material-icons">flash_on</i></h2>
+            <h5 class="center">Laser Lanes</h5>
+            <p class="light">Our product is equipped with laser lanes to communicate to cars what space YOU need to ride. The laser feature is engaged right when you turn on the system and turns off when you press the power button, avoiding accidentally shutting off the system while your riding to ensure the safest ride. </p>
           </div>
         </div>
-
-        <div class="col s12 m4">
+        <div class="col s12 m3">
           <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons">group</i></h2>
-            <h5 class="center">User Experience Focused</h5>
-
-            <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
+            <h2 class="center red-text"><i class="material-icons">directions</i></h2>
+            <h5 class="center">Turn Signals</h5>
+            <p class="light">The days are over when your turning or changing lanes and your worrying about a car noticing. With our turn signal technology, let cars clearly know when you want to move so they can be aware of you and your next move.</p>
           </div>
         </div>
-
-        <div class="col s12 m4">
+        <div class="col s12 m3">
           <div class="icon-block">
-            <h2 class="center brown-text"><i class="material-icons">settings</i></h2>
-            <h5 class="center">Easy to work with</h5>
-
+            <h2 class="center red-text"><i class="material-icons">highlight</i></h2>
+            <h5 class="center">Brake Light</h5>
             <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
           </div>
         </div>
+        <div class="col s12 m3">
+          <div class="icon-block">
+            <h2 class="center red-text"><i class="material-icons">directions_car</i></h2>
+            <h5 class="center">Car Sensors</h5>
+            <p class="light">Our car sensor technology is what completes our ultra safe technology. No need to check to ensure that a car is not next to you when you want to turn and no more worrying how close a car is. With our ultrasonic sensor technology, CycleSafe will warn you when a car is just too close for comfort.</p>
+          </div>
+        </div>
       </div>
-
     </div>
   </div>
   <script>

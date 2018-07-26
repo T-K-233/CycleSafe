@@ -1,12 +1,12 @@
 class CycleSafeBoard{
   /*
    * —————————————————————————— *
-   *                   ---- A0     VIN --- 
+   *              Acc     ---- A0     VIN --- 
    *                   ---- A1     VCC ---
    *                   ---- A2     GND ---
    *                   ---- A3     RES --- 
    *                   ---- A4     14 ----  
-   *             Acc   ---- A5     13 ---- Buzzer
+   *                ---- A5     13 ---- Buzzer
    *                   ---- A6     12 ---- PING_R_TRIG   green
    *                   ----  0     11 ---- PING_R_ECHO   yel
    *                   ----  1     10 ---- PING_L_TRIG   green
@@ -21,7 +21,7 @@ class CycleSafeBoard{
    * —————————————————————————— *
    */
   public:
-    static const int DIS_THRES = 60, MIC_THRES = 90, ACCEL_THRES = 24, BLINK_RATE = 500;
+    static const int DIS_THRES = 60, MIC_THRES = 90, ACCEL_THRES = 24, BLINK_RATE = 250, LASER_BRIGHTNESS = 200;
   
     static const int LASER = 2, LED_L = 3, LED_B = 4, LED_R = 5;
     static const int MIC = 4, ACCEL = 5, BUZZ = 13;
@@ -133,7 +133,7 @@ class CycleSafeBoard{
       timer ++;
       if(timer > BLINK_RATE) timer = 0;
 
-      analogWrite(LASER, 60);
+      analogWrite(LASER, LASER_BRIGHTNESS);
       delay(1);
     }
 
