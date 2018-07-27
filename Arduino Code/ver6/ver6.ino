@@ -79,7 +79,7 @@ class CycleSafeBoard{
         int r_dis = get_distance(false);
         if(r_dis && r_dis < distance) distance = r_dis;
       }
-      if(distance && distance < DIS_THRES){tone(BUZZ, 2000, 1);} // ;
+      if(distance && distance < DIS_THRES){tone(BUZZ, 2000, 1);}
       
       if(timer % 100 == 0){
         acc = analogRead(5);
